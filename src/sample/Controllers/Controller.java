@@ -1,19 +1,15 @@
 package sample.Controllers;
 
-import java.io.IOException;
+import java.beans.EventHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import sample.Helpers.Loader;
 
 public class Controller {
 
@@ -51,23 +47,16 @@ public class Controller {
                 alert.setHeaderText(null);
                 alert.setContentText("Введите логин и пароль");
                 alert.showAndWait();
+                //Alerts alerts = new Alerts(Alert.AlertType.INFORMATION,"Капец", EventHandler<enterButton>sh)
             }
         });
 
         registryButton.setOnAction(event -> {
+
             registryButton.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/View/signUp.fxml"));
-            try {
-                loader.load();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            new Loader("/sample/View/signUp.fxml");
+
         });
 
     }

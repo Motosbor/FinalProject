@@ -20,6 +20,17 @@ public class WorkerDB {
                 statement.setString(4, lastname);
                 statement.execute();
 
+    }
+
+    public static void loginCheck(String login, String password, Connection connection) throws SQLException{
+
+       String check = "SELECT EXIST(SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USER_LOGIN + " LIKE " + "? AND " +
+        Const.USER_PASSWORD + " LIKE ?)";
+
+       PreparedStatement statement = connection.prepareStatement(check);
+       statement.setString(1,login);
+       statement.setString(2,password);
+       statement.execute();
 
     }
 

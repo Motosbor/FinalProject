@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import sample.Helpers.Loader;
 import sample.WorkDB.ConnectorToDB;
 import sample.WorkDB.WorkerDB;
 
@@ -52,11 +53,18 @@ public class signUpController {
 
                     WorkerDB.signInUser(login, password, name, lastName, ConnectorToDB.giveMeConnection());
 
+                    registryButton.getScene().getWindow().hide();
+                    alert.setTitle("Succes");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Успешная регистрация!\n Логин - " + login + "\n" + "Пароль - " + password);
+                    alert.showAndWait();
+                    new Loader("/sample/View/sample.fxml");
+
                 }catch (SQLException e){
 
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("Введите все данные для регистрации");
+                    alert.setContentText("Такой логин уже существует!");
                     alert.showAndWait();
 
                 }
