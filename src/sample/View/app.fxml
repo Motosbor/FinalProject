@@ -22,12 +22,13 @@
                         <Font name="Lobster" size="56.0" />
                     </font>
                 </Label>
+            <ImageView fx:id="imageButton" fitHeight="65.0" fitWidth="89.0" layoutX="38.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/1.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
-      <ImageView fx:id="imageButton" fitHeight="271.0" fitWidth="411.0" layoutX="174.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/1.png" />
-         </image>
-      </ImageView>
+      <Button layoutX="47.0" layoutY="120.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="154.0" text="Button" />
     </children>
 </AnchorPane>

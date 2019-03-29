@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import sample.Entitys.User;
 import sample.Helpers.Loader;
 import sample.WorkDB.ConnectorToDB;
 import sample.WorkDB.WorkerDB;
@@ -51,9 +52,10 @@ public class signUpController {
 
                 try {
 
-                    WorkerDB.signInUser(login, password, name, lastName, ConnectorToDB.giveMeConnection());
 
+                    WorkerDB.signInUser(new User(name,lastName,login,password), ConnectorToDB.giveMeConnection());
                     registryButton.getScene().getWindow().hide();
+
                     alert.setTitle("Succes");
                     alert.setHeaderText(null);
                     alert.setContentText("Успешная регистрация!\n Логин - " + login + "\n" + "Пароль - " + password);

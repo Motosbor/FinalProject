@@ -2,6 +2,7 @@ package sample.Controllers;
 
 import java.beans.EventHandler;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -10,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Helpers.Loader;
+import sample.WorkDB.ConnectorToDB;
+import sample.WorkDB.WorkerDB;
 
 public class Controller {
 
@@ -41,7 +44,19 @@ public class Controller {
             String login = loginField.getText().trim();
             String password = passwordField.getText().trim();
             if(!login.isEmpty() && !password.isEmpty()){
-                loginUser(login,password);
+                try {
+                    if(WorkerDB.loginCheck(login,password, ConnectorToDB.giveMeConnection())){
+                        enterButton.getScene().getWindow().hide();
+                        new Loader("/sample/View/app.fxml");
+                    }else {
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Неверный логин или пароль");
+                        alert.showAndWait();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }else {
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
