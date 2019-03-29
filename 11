@@ -1,0 +1,19 @@
+ public static void loginCheck2(String login,String password,Connection connection) throws SQLException {
+
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USER_LOGIN + " = ? AND " + Const.USER_PASSWORD + " = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(select);
+        preparedStatement.setString(1,login);
+        preparedStatement.setString(2,password);
+
+       try (ResultSet resultSet = preparedStatement.executeQuery()){
+           if (resultSet.next()){
+               boolean x = resultSet.getBoolean(1);
+               if(x){
+                   System.out.println("FOUND");
+               }else {
+                   System.out.println("NOTFOUND");
+               }
+           }
+       }
+
+    }
