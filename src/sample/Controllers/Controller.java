@@ -62,7 +62,7 @@ public class Controller {
                 alert.setHeaderText(null);
                 alert.setContentText("Введите логин и пароль");
                 alert.showAndWait();
-                //Alerts alerts = new Alerts(Alert.AlertType.INFORMATION,"Капец", EventHandler<enterButton>sh)
+
             }
         });
 
