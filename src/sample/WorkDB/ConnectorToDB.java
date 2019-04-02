@@ -2,7 +2,7 @@ package sample.WorkDB;
 
 import java.sql.*;
 import java.sql.Connection;
-
+//TODO попробуйте здесь использовать синглтон
 public class ConnectorToDB {
 
     public static Connection giveMeConnection (){
