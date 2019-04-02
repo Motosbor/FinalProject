@@ -1,11 +1,19 @@
 package sample.Entitys;
 
+import javax.xml.bind.annotation.XmlType;
+
+
+@XmlType(propOrder = {"name","lastName","login","password"})
 public class User {
 
     private String name;
     private String lastName;
     private String login;
     private String password;
+
+
+    public User() {
+    }
 
     public User(String name, String lastName, String login, String password) {
         this.name = name;

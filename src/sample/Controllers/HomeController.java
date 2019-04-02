@@ -1,5 +1,7 @@
 package sample.Controllers;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,14 +15,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
+import sample.Entitys.AllUsers;
 import sample.Entitys.User;
-import sample.Helpers.Loader;
+import sample.Helpers.XMLWorker;
 import sample.WorkDB.ConnectorToDB;
 import sample.WorkDB.WorkerDB;
 
@@ -32,12 +33,6 @@ public class HomeController implements Initializable {
 
     @FXML
     private TableColumn<User, String> C4;
-
-    @FXML
-    private Button backButt;
-
-    @FXML
-    private ImageView imageButton;
 
     @FXML
     private TableColumn<User, String> C1;
@@ -59,6 +54,10 @@ public class HomeController implements Initializable {
 
         ObservableList<User> list = FXCollections.observableArrayList(WorkerDB.takeAllUsers(ConnectorToDB.getInstance().getConnection()));
         TableVieW.setItems(list);
+        AllUsers allUsers = new AllUsers(list);
+        XMLWorker.createXMLFile(allUsers);
+
+
     }
 
     public void turnBack(ActionEvent actionEvent) {
@@ -73,6 +72,20 @@ public class HomeController implements Initializable {
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
+    }
+
+    @FXML
+    void giveMeMyXML(ActionEvent event) {
+
+        File file = new File("users1.xml");
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            desktop.open(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 
