@@ -1,20 +1,31 @@
 package sample.Controllers;
 
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.Entitys.User;
+import sample.Helpers.AlertHelper;
 import sample.Helpers.Loader;
 import sample.WorkDB.ConnectorToDB;
 import sample.WorkDB.WorkerDB;
 
-public class signUpController {
+public class signUpController implements Initializable {
 
+
+    public static AlertHelper alertHelper;
     @FXML
     private ResourceBundle resources;
 
@@ -36,52 +47,35 @@ public class signUpController {
     @FXML
     private TextField loginField;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-    @FXML
-    void initialize() {
+    }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    public void isnertRegistryData(javafx.event.ActionEvent actionEvent) throws IOException {
 
-        registryButton.setOnAction(event -> {
-            String login = loginField.getText().trim();
-            String password = passwordField.getText().trim();
-            String name = nameField.getText().trim();
-            String lastName = lastNameField.getText().trim();
+        String login = loginField.getText().trim();
+        String password = passwordField.getText().trim();
+        String name = nameField.getText().trim();
+        String lastName = lastNameField.getText().trim();
 
-            if(!login.isEmpty() && !password.isEmpty() && !name.isEmpty() && !lastName.isEmpty()){
+        if(!login.isEmpty() && !password.isEmpty() && !name.isEmpty() && !lastName.isEmpty()){
+            try {
 
-                try {
+                WorkerDB.signInUser(new User(name,lastName,login,password),ConnectorToDB.getInstance().getConnection());
+                alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"Succes!","Успешная регистрация!\nваш логин:" + login +"\nваш пароль:" + password);
+                Parent tableViewParent = FXMLLoader.load(getClass().getResource("/sample/View/sample.fxml"));
+                Scene tableViewScene = new Scene(tableViewParent);
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(tableViewScene);
+                window.show();
 
-
-                    WorkerDB.signInUser(new User(name,lastName,login,password), ConnectorToDB.giveMeConnection());
-                    registryButton.getScene().getWindow().hide();
-
-                    alert.setTitle("Succes");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Успешная регистрация!\n Логин - " + login + "\n" + "Пароль - " + password);
-                    alert.showAndWait();
-                    new Loader("/sample/View/sample.fxml");
-
-                }catch (SQLException e){
-
-                    alert.setTitle("Error");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Такой логин уже существует!");
-                    alert.showAndWait();
-
-                }
-
-            }else {
-
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Введите все данные для регистрации");
-                alert.showAndWait();
-
+            } catch (SQLException e) {
+                alertHelper = new AlertHelper(Alert.AlertType.ERROR,"Error","Такой логин уже существует!");
             }
-
-        });
-
+        }else {
+            alertHelper = new AlertHelper(Alert.AlertType.ERROR,"Error","Введите все данные для регистрации");
+        }
     }
 }
 

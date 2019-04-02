@@ -1,5 +1,7 @@
 package sample.WorkDB;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import sample.Entitys.User;
 
 import java.sql.*;
@@ -61,5 +63,24 @@ public class WorkerDB {
 
         return res;
 
+    }
+
+    public static ObservableList<User> takeAllUsers(Connection connection){
+        ObservableList<User> allUsers = FXCollections.observableArrayList();
+
+        Statement statement = null;
+        try {
+
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + Const.USER_TABLE);
+            while (resultSet.next()){
+            User user = new User(resultSet.getString(Const.USER_NAME),resultSet.getString(Const.USER_LASTNAME),
+                    resultSet.getString(Const.USER_LOGIN),resultSet.getString(Const.USER_PASSWORD));
+            allUsers.add(user);
+            }
+        } catch (SQLException e) {
+        e.printStackTrace();
+        }
+        return allUsers;
     }
 }

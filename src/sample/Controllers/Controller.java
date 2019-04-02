@@ -18,12 +18,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.Helpers.AlertHelper;
 import sample.Helpers.Loader;
 import sample.WorkDB.ConnectorToDB;
 import sample.WorkDB.WorkerDB;
 
 public class Controller implements Initializable {
 
+
+    public static String login;
+    public static String password;
+    public static AlertHelper alertHelper;
     @FXML
     private ResourceBundle resources;
 
@@ -43,66 +48,46 @@ public class Controller implements Initializable {
     private TextField loginField;
 
 
-    @FXML
-    void initialize() {
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        enterButton.setOnAction(event -> {
-            String login = loginField.getText().trim();
-            String password = passwordField.getText().trim();
-            if(!login.isEmpty() && !password.isEmpty()){
-                try {
-                    if(WorkerDB.loginCheck(login,password, ConnectorToDB.giveMeConnection())){
-                        enterButton.getScene().getWindow().hide();
-                        new Loader("/sample/View/app.fxml");
-                    }else {
-                        alert.setTitle("Error");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Неверный логин или пароль");
-                        alert.showAndWait();
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }else {
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Введите логин и пароль");
-                alert.showAndWait();
-
-            }
-        });
-
-//        registryButton.setOnAction(event -> {
-//
-//            registryButton.getScene().getWindow().hide();
-//
-//            new Loader("/sample/View/signUp.fxml");
-//
-//        });
-
-    }
-
-    private void loginUser(String login, String password) {
-    }
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    public void changeButt(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void openSignUpForm(javafx.event.ActionEvent actionEvent) throws IOException {
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("/sample/View/signUp.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
+    }
+
+    public void openEnterUpForm(javafx.event.ActionEvent actionEvent) throws IOException {
+
+        login = loginField.getText().trim();
+        password = passwordField.getText().trim();
+
+        if (!login.isEmpty() && !password.isEmpty()) {
+            try {
+                if (WorkerDB.loginCheck(login, password, ConnectorToDB.getInstance().getConnection())) {
+
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/sample/View/app.fxml"));
+                    Scene tableViewScene = new Scene(tableViewParent);
+                    Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    window.setScene(tableViewScene);
+                    window.show();
+
+                } else {
+                    alertHelper = new AlertHelper(Alert.AlertType.ERROR,"Login|Password Err","Неверный логин или пароль");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else {
+            alertHelper = new AlertHelper(Alert.AlertType.ERROR,"Login|Password Err","Введите логин и пароль");
+        }
     }
 }
 

@@ -3,10 +3,12 @@ package sample.WorkDB;
 import java.sql.*;
 import java.sql.Connection;
 
-public class ConnectorToDB {
+public class ConnectorToDB  {
 
-    public static Connection giveMeConnection (){
+    private static ConnectorToDB instance;
+    private static Connection connection;
 
+    private ConnectorToDB (){
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
@@ -24,6 +26,18 @@ public class ConnectorToDB {
             e.printStackTrace();
         }
 
+       this.connection = connection;
+    }
+
+    public static ConnectorToDB getInstance (){
+
+        if (instance == null){
+            instance = new ConnectorToDB();
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
         return connection;
     }
 }
