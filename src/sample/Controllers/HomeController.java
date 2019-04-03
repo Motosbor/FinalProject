@@ -130,10 +130,10 @@ public class HomeController implements Initializable {
         if(!loginField.isEmpty() && !passwordField.isEmpty() && !nameField.isEmpty() && !lastNameField.isEmpty()){
             try {
 
-                WorkerDB.signInUser(new User(nameField,lastNameField,loginField,passwordField),ConnectorToDB.getInstance().getConnection());
+                User user;
+                WorkerDB.signInUser(user = new User(nameField,lastNameField,loginField,passwordField),ConnectorToDB.getInstance().getConnection());
                 alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"Succes!","Пользователь добавлен!\n");
-                ObservableList<User> list = FXCollections.observableArrayList(WorkerDB.takeAllUsers(ConnectorToDB.getInstance().getConnection()));
-                TableVieW.setItems(list);
+                TableVieW.getItems().add(user);
 
             } catch (SQLException  e) {
                 alertHelper = new AlertHelper(Alert.AlertType.ERROR,"Error","Такой логин уже существует!");
