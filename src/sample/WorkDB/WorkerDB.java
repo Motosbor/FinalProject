@@ -2,6 +2,8 @@ package sample.WorkDB;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sample.Entitys.Customer;
+import sample.Entitys.Sell;
 import sample.Entitys.User;
 
 import java.sql.*;
@@ -70,5 +72,35 @@ public class WorkerDB {
         e.printStackTrace();
         }
         return allUsers;
+    }
+
+    public static ObservableList<Customer> takeAllCustomers(Connection connection){
+        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + Const.CUSTOMER_TABLE);
+            while (resultSet.next()){
+                Customer customer = new Customer(resultSet.getString(Const.CUSTOMER_NAME),resultSet.getDouble(Const.CUSTOMER_DISCOUNT));
+                allCustomers.add(customer);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return allCustomers;
+    }
+
+    public static ObservableList<Sell> takeAllSales(Connection connection){
+        ObservableList<Sell> sellObservableList = FXCollections.observableArrayList();
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + Const.SELLS_TABLE);
+            while (resultSet.next()){
+                Sell sell = new Sell(resultSet.getString(Const.SELLER),resultSet.getString(Const.CUSTOMER),resultSet.getString(Const.PRODUCT_NAME),
+                        resultSet.getInt(Const.))
+            }
+        }
+        return  sellObservableList;
     }
 }

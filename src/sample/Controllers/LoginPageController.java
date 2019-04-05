@@ -67,7 +67,7 @@ public class LoginPageController implements Initializable {
             try {
                 if (WorkerDB.loginCheck(login, password, ConnectorToDB.getInstance().getConnection())) {
 
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/sample/View/homePage.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/sample/View/homePage1.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);
