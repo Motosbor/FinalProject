@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
@@ -16,37 +17,40 @@
                        <Image url="@../assets/ying_yang.png" />
                    </image>
                </ImageView>
-            <TextField fx:id="ThisUser" layoutX="475.0" layoutY="18.0" prefHeight="25.0" prefWidth="193.0" />
+            <TextField fx:id="ThisUser" cacheShape="false" editable="false" focusTraversable="false" layoutX="475.0" layoutY="18.0" prefHeight="25.0" prefWidth="193.0">
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor></TextField>
             </children>
         </AnchorPane>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="73.0" mnemonicParsing="false" onAction="#turnBack" prefHeight="29.0" prefWidth="117.0" style="-fx-background-color: #5DBCD2;" text="Назад" textFill="#fffcfc">
+      <Button fx:id="backButton" layoutX="7.0" layoutY="73.0" mnemonicParsing="false" onAction="#turnBack" prefHeight="29.0" prefWidth="117.0" style="-fx-background-color: #5DBCD2;" text="Назад" textFill="#fffcfc">
          <font>
             <Font name="Lobster" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="115.0" mnemonicParsing="false" onAction="#giveMeMyXML" prefHeight="29.0" prefWidth="117.0" style="-fx-background-color: #5DBCD2;" text="XML" textFill="#fffcfc">
+      <Button layoutX="7.0" layoutY="115.0" mnemonicParsing="false" onAction="#giveMeMyXML" prefHeight="29.0" prefWidth="117.0" style="-fx-background-color: #5DBCD2;" text="XML" textFill="#fffcfc">
          <font>
             <Font name="Lobster" size="14.0" />
          </font>
       </Button>
-      <TabPane layoutX="137.0" layoutY="73.0" prefHeight="310.0" prefWidth="560.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="126.0" layoutY="73.0" prefHeight="310.0" prefWidth="567.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Продажа">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="296.0" prefWidth="560.0" spacing="10.0">
+                        <VBox prefHeight="296.0" prefWidth="567.0" spacing="10.0">
                            <children>
-                              <TableView fx:id="NewSellTable" prefHeight="200.0" prefWidth="372.0">
+                              <TableView fx:id="NewSellTable" prefHeight="184.0" prefWidth="560.0">
                                 <columns>
-                                    <TableColumn fx:id="productCellInNewSell" prefWidth="292.0" text="Товар" />
-                                    <TableColumn fx:id="productPriceCellInNewSell" prefWidth="131.0" text="Цена за шт." />
-                                    <TableColumn fx:id="productBalanceCellInNewSell" prefWidth="157.0" text="Остаток" />
+                                    <TableColumn fx:id="productCellInNewSell" prefWidth="265.0" text="Товар" />
+                                    <TableColumn fx:id="productPriceCellInNewSell" prefWidth="156.0" text="Цена за шт." />
+                                    <TableColumn fx:id="productBalanceCellInNewSell" prefWidth="145.0" text="Остаток" />
                                 </columns>
                               </TableView>
                               <HBox prefHeight="36.0" prefWidth="420.0" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="customerNameFieldInNewSell" alignment="TOP_CENTER" prefHeight="21.0" prefWidth="101.0" promptText="Покупатель" />
+                                    <TextField fx:id="customerIDFieldInNewSell" alignment="TOP_CENTER" prefHeight="21.0" prefWidth="101.0" promptText="Id покупателя" />
                                     <TextField fx:id="productCountFieldInNewSell" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="96.0" promptText="Количество" />
                                     <TextField fx:id="productNameFieldInNewSell" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="96.0" promptText="Товар" />
                                  </children>
@@ -72,24 +76,26 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="296.0" prefWidth="560.0" spacing="10.0">
+                        <VBox prefHeight="296.0" prefWidth="567.0" spacing="10.0">
                            <children>
                               <TableView fx:id="CustomersTable" prefHeight="222.0" prefWidth="420.0">
                                  <columns>
-                                    <TableColumn fx:id="customerNameCellInCustomersTable" prefWidth="269.0" text="Имя Покупателя" />
-                                    <TableColumn fx:id="customerDiscountCellInCustomersTable" prefWidth="290.0" text="Скидка" />
+                                    <TableColumn fx:id="customerNameCellInCustomersTable" prefWidth="305.0" text="Имя Покупателя" />
+                                    <TableColumn fx:id="customerDiscountCellInCustomersTable" prefWidth="139.0" text="Скидка" />
+                                    <TableColumn fx:id="customerIDCellInCustomersTable1" prefWidth="122.0" text="Индентификатор" />
                                  </columns>
                               </TableView>
                               <HBox prefHeight="40.0" prefWidth="420.0" spacing="10.0">
                                  <children>
                                     <TextField fx:id="customerNameFieldInCustomersTable" prefHeight="21.0" prefWidth="101.0" promptText="Имя" />
-                                    <TextField fx:id="customerDiscountFieldInCustomersTable1" prefHeight="21.0" prefWidth="101.0" promptText="Скидка" />
+                                    <TextField fx:id="customerDiscountFieldInCustomersTable" prefHeight="21.0" prefWidth="101.0" promptText="Скидка" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="88.0" prefWidth="420.0" spacing="10.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#addCustomerButtonInCustomersTable" prefHeight="25.0" prefWidth="102.0" text="Добавить" />
                                     <Button mnemonicParsing="false" onAction="#findCustomerButtonInCustomersTable" prefHeight="25.0" prefWidth="86.0" text="Найти" />
+                                    <Button mnemonicParsing="false" onAction="#AllCustomerButtonInCustomersTable" prefHeight="25.0" prefWidth="116.0" text="Все покупатели" />
                                     <Button mnemonicParsing="false" onAction="#deleteCustomerButtonInCustomersTable" prefHeight="25.0" prefWidth="92.0" text="Удалить" />
                                  </children>
                               </HBox>
@@ -103,21 +109,22 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="296.0" prefWidth="560.0" spacing="10.0">
+                        <VBox prefHeight="296.0" prefWidth="567.0" spacing="10.0">
                            <children>
-                              <TableView fx:id="AllSellsTable" prefHeight="171.0" prefWidth="400.0">
+                              <TableView fx:id="AllSellsTable" prefHeight="163.0" prefWidth="546.0">
                                  <columns>
                                     <TableColumn fx:id="productNameCellAllSellsTable" prefWidth="81.0" text="Товар" />
                                     <TableColumn fx:id="productCountCellAllSellsTable" prefWidth="81.0" text="Количество" />
                                     <TableColumn fx:id="totalPriceCellAllSellsTable" prefWidth="90.0" text="Сумма" />
-                                    <TableColumn fx:id="sellerNameCellAllSellsTable" prefWidth="96.0" text="Продавец" />
-                                    <TableColumn fx:id="customerNameCellAllSellsTable" prefWidth="97.0" text="Покупатель" />
-                                    <TableColumn fx:id="dateCellAllSellsTable" prefWidth="114.0" text="Дата" />
+                                    <TableColumn fx:id="sellerNameCellAllSellsTable" prefWidth="84.0" text="Продавец" />
+                                    <TableColumn fx:id="IDCellAllSellsTable1" prefWidth="33.0" text="ID" />
+                                    <TableColumn fx:id="customerNameCellAllSellsTable" prefWidth="94.0" text="Покупатель" />
+                                    <TableColumn fx:id="dateCellAllSellsTable" prefWidth="103.0" text="Дата" />
                                  </columns>
                               </TableView>
                               <HBox prefHeight="40.0" prefWidth="420.0" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="nameOfSellerFieldAllSellsTable" prefHeight="25.0" prefWidth="137.0" promptText="Имя" />
+                                    <TextField fx:id="idOfSellerFieldAllSellsTable1" prefHeight="25.0" prefWidth="137.0" promptText="ID" />
                                     <Button mnemonicParsing="false" onAction="#findSellerSalesButtonAllSellsTable" text="Продажи продавца" />
                                  </children>
                               </HBox>
@@ -137,13 +144,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="296.0" prefWidth="560.0" spacing="10.0">
+                        <VBox prefHeight="296.0" prefWidth="567.0" spacing="10.0">
                            <children>
                               <TableView fx:id="ProductsTable" prefHeight="184.0" prefWidth="374.0">
                                  <columns>
                                     <TableColumn fx:id="productNameCellProductsTable" prefWidth="193.0" text="Товар" />
                                     <TableColumn fx:id="productPriceCellProductsTable" prefWidth="205.0" text="Цена за шт." />
-                                    <TableColumn fx:id="productBalanceCellProductsTable" prefWidth="161.0" text="Остаток" />
+                                    <TableColumn fx:id="productBalanceCellProductsTable" prefWidth="168.0" text="Остаток" />
                                  </columns>
                               </TableView>
                               <HBox prefHeight="36.0" prefWidth="420.0" spacing="10.0">
@@ -159,6 +166,7 @@
                                     <Button mnemonicParsing="false" onAction="#deleteProductButtonProductsTable" text="Удалить" />
                                     <Button mnemonicParsing="false" onAction="#findProductButtonProductsTable" text="Найти" />
                                     <Button mnemonicParsing="false" onAction="#changeProductButtonProductsTable" text="Изменить" />
+                                    <Button mnemonicParsing="false" onAction="#allProductButtonInProductsTable" prefHeight="25.0" prefWidth="97.0" text="Весь Товар" />
                                  </children>
                               </HBox>
                            </children>

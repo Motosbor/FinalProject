@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"name","lastName","login","password"})
 public class User {
 
+    private int id;
     private String name;
     private String lastName;
     private String login;
@@ -13,6 +14,26 @@ public class User {
 
 
     public User() {
+    }
+
+    public User(int id) {
+        this.id = id;
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
+    public User(int id,String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public User(int id,String name, String lastName, String login, String password) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
     }
 
     public User(String name, String lastName, String login, String password) {
@@ -53,4 +74,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 }
