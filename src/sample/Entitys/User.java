@@ -3,7 +3,7 @@ package sample.Entitys;
 import javax.xml.bind.annotation.XmlType;
 
 
-@XmlType(propOrder = {"name","lastName","login","password"})
+@XmlType(propOrder = {"id","name","lastName","login","password"})
 public class User {
 
     private int id;
@@ -13,8 +13,7 @@ public class User {
     private String password;
 
 
-    public User() {
-    }
+    public User() { }
 
     public User(int id) {
         this.id = id;
@@ -78,4 +77,5 @@ public class User {
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
+
 }

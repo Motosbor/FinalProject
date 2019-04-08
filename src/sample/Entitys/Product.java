@@ -1,5 +1,8 @@
 package sample.Entitys;
 
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(propOrder = {"productName","price","balance"})
 public class Product {
     private String productName;
     private double price;

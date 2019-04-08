@@ -1,6 +1,10 @@
 package sample.Entitys;
 
-public class Customer {
+
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(propOrder = {"id","customerName","discount"})
+public class Customer  {
     private int id;
     private String customerName;
     private double discount;

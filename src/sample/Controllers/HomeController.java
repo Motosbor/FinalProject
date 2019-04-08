@@ -22,7 +22,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import sample.Entitys.AllUsers;
 import sample.Entitys.User;
 import sample.Helpers.AlertHelper;
 import sample.Helpers.XMLWorker;
@@ -80,10 +79,10 @@ public class HomeController implements Initializable {
         loginCell.setCellValueFactory(new PropertyValueFactory<User, String>("login"));
         passwordCell.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
 
-        ObservableList<User> list = FXCollections.observableArrayList(WorkerDB.takeAllUsers(ConnectorToDB.getInstance().getConnection()));
-        TableVieW.setItems(list);
-        AllUsers allUsers = new AllUsers(list);
-        XMLWorker.createXMLFile(allUsers);
+//        ObservableList<User> list = FXCollections.observableArrayList(WorkerDB.takeAllUsers(ConnectorToDB.getInstance().getConnection()));
+//        TableVieW.setItems(list);
+//        AllUsers allUsers = new AllUsers(list);
+//        XMLWorker.createXMLFile(allUsers,"view.xsl");
 
         animate = new Animate(inYan);
         animate.playAnimation();

@@ -1,7 +1,8 @@
 package sample.Entitys;
 
+import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
-
+@XmlType (propOrder = {"sellerId","seller","customer","product","count","totalPrice","dateOfSell"})
 public class Sell {
     private int sellerId;
     private String seller;

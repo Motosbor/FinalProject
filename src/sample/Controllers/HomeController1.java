@@ -3,6 +3,7 @@ package sample.Controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,17 +18,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.Entitys.*;
+import sample.Entitys.XMLCollector;
 import sample.Helpers.AlertHelper;
 import sample.Helpers.XMLWorker;
 import sample.WorkDB.ConnectorToDB;
 import sample.WorkDB.WorkerDB;
 import sample.animation.Animate;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -132,11 +130,32 @@ public class HomeController1 implements Initializable {
             try {
                 Integer.parseInt(customerIDFieldInNewSell.getText());
                 Customer customer = WorkerDB.getCustomerByID(Integer.parseInt(customerIDFieldInNewSell.getText()), ConnectorToDB.getInstance().getConnection());
-                int productCount = Integer.parseInt(productCountFieldInNewSell.getText());
-                double totalPrice = WorkerDB.addSell(product, user, customer, productCount, ConnectorToDB.getInstance().getConnection());
-                fillAllSellsTable(false);
-                alertHelper = new AlertHelper(Alert.AlertType.INFORMATION, "Succes", "Продажа добавлена! \n Покупатель - " + customer.getCustomerName() +
-                        "\n Продавец - " + user.getName() + " " + user.getLastName() + " \n Товар - " + product.getProductName() + " кол-во - " + productCount + " сумма покупки - " + totalPrice);
+                if (customer!=null) {
+
+                    try {
+                        int productCount = Integer.parseInt(productCountFieldInNewSell.getText());
+                        if(productCount>0){
+                        product.setBalance(product.getBalance() - productCount);
+                        if(product.getBalance()>=0) {
+                            double totalPrice = WorkerDB.addSell(product, user, customer, productCount, ConnectorToDB.getInstance().getConnection());
+                            fillAllSellsTable(false);
+                            WorkerDB.changeProduct(product, ConnectorToDB.getInstance().getConnection());
+                            fillProductsTable(false);
+                            fillNewSellTable(false);
+                            alertHelper = new AlertHelper(Alert.AlertType.INFORMATION, "Succes", "Продажа добавлена! \n Покупатель - " + customer.getCustomerName() +
+                                    "\n Продавец - " + user.getName() + " " + user.getLastName() + " \n Товар - " + product.getProductName() + " кол-во - " + productCount + " сумма покупки - " + totalPrice);
+                        }else {
+                            alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"BalnceLessZero","Недопустимое кол-во товара");
+                        }
+                        }else {
+                        alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"BalnceLessZero","Недопустимое кол-во товара");
+                        }
+                    }catch (NumberFormatException e){
+                        alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"Error","Недопустимый формат числа");
+                    }
+                }else {
+                    alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"NotFound","Покупатель с таким ID не найден");
+                }
             } catch (SQLException |NullPointerException ex) {
                 alertHelper = new AlertHelper(Alert.AlertType.INFORMATION, "NotFound", "Не найден покупатель");
             }
@@ -319,14 +338,22 @@ public class HomeController1 implements Initializable {
 
         if (product!=null) {
             try {
-                try {
+                if(!productPriceFieldProductsTable.getText().isEmpty())
+                    try {
                     product.setPrice(Double.parseDouble(productPriceFieldProductsTable.getText()));
-                    product.setBalance(Integer.parseInt(productBalanceFieldProductsTable.getText()));
-                }catch (NumberFormatException e){
-                    alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"WrongNumber","Неверный ввод значений");
+                    }catch (NumberFormatException e){
+                    alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"WrongNumber","Неверный ввод значений цены");
+                    }
+                if(!productBalanceFieldProductsTable.getText().isEmpty()){
+                    try {
+                        product.setBalance(Integer.parseInt(productBalanceFieldProductsTable.getText()));
+                    }catch (NumberFormatException e){
+                        alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"WrongNumber","Неверный ввод значений остатка");
+                    }
                 }
                 WorkerDB.changeProduct(product,ConnectorToDB.getInstance().getConnection());
                 fillProductsTable(false);
+                fillNewSellTable(false);
             } catch (SQLException e) {
                 alertHelper = new AlertHelper(Alert.AlertType.INFORMATION, "SQLerr", "Что-то пошло не так");
             }
@@ -342,6 +369,7 @@ public class HomeController1 implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
 
+
         ThisUser.appendText(user.getName() + " " + user.getLastName() + " Ваш ID - " + user.getId());
 
         fillCustomersTable(true);
@@ -350,9 +378,6 @@ public class HomeController1 implements Initializable {
         fillNewSellTable(true);
 
 
-
-//        AllUsers allUsers = new AllUsers(list);
-//        XMLWorker.createXMLFile(allUsers);
 
         animate = new Animate(inYan);
         animate.playAnimation();
@@ -378,7 +403,7 @@ public class HomeController1 implements Initializable {
     @FXML
     void giveMeMyXML(ActionEvent event) {
 
-        File file = new File("users1.xml");
+        File file = new File("users.xml");
         Desktop desktop = Desktop.getDesktop();
         try {
             desktop.open(file);
@@ -430,31 +455,30 @@ public class HomeController1 implements Initializable {
         NewSellTable.setItems(productObservableList);
     }
 
-    public void addUser(ActionEvent actionEvent) {
 
-//         loginField = login.getText().trim();
-//         passwordField = password.getText().trim();
-//         nameField = name.getText().trim();
-//         lastNameField = lastName.getText().trim();
-//
-//        if(!loginField.isEmpty() && !passwordField.isEmpty() && !nameField.isEmpty() && !lastNameField.isEmpty()){
-//            try {
-//
-//                User user;
-//                WorkerDB.signInUser(user = new User(nameField,lastNameField,loginField,passwordField),ConnectorToDB.getInstance().getConnection());
-//                alertHelper = new AlertHelper(Alert.AlertType.INFORMATION,"Succes!","Пользователь добавлен!\n");
-//                TableVieW.getItems().add(user);
-//
-//            } catch (SQLException  e) {
-//                alertHelper = new AlertHelper(Alert.AlertType.ERROR,"Error","Такой логин уже существует!");
-//            }
-//        }else {
-//            alertHelper = new AlertHelper(Alert.AlertType.ERROR,"Error","Введите все данные для регистрации");
-//        }
+    public void SellsTAB(Event event) {
+
+        ArrayList<Object> list = new ArrayList<>(AllSellsTable.getItems());
+        XMLCollector xmlCollector = new XMLCollector(list);
+        XMLWorker.createXMLFile(xmlCollector, "view.xsl");
+
+    }
+
+    public void CustomersTAB(Event event) {
+        ArrayList<Object> list = new ArrayList<>(CustomersTable.getItems());
+
+        XMLCollector XMLCollector = new XMLCollector(list);
+
+        XMLWorker.createXMLFile(XMLCollector,"view.xsl");
     }
 
 
-    public void deleteUser(ActionEvent actionEvent) {
+    public void ProductsTAB(Event event) {
+        ArrayList<Object> list = new ArrayList<>(ProductsTable.getItems());
+        XMLCollector xmlCollector = new XMLCollector(list);
+        XMLWorker.createXMLFile(xmlCollector, "view.xsl");
     }
 
+    public void NewSellTAB(Event event) {
+    }
 }
