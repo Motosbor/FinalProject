@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href="src/ShemasXSL/SellView.xsl" ?>
+<xmlCollector>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>0</sellerId>
+        <seller>Рустам</seller>
+        <customer>Иван</customer>
+        <product>Гвозди</product>
+        <count>23</count>
+        <totalPrice>218.5</totalPrice>
+        <dateOfSell>2019-04-07T15:31:10.594+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Иван</customer>
+        <product>Молотки</product>
+        <count>23</count>
+        <totalPrice>2185.0</totalPrice>
+        <dateOfSell>2019-04-07T15:37:33.315+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Иван</customer>
+        <product>Молотки</product>
+        <count>23</count>
+        <totalPrice>2185.0</totalPrice>
+        <dateOfSell>2019-04-07T15:37:35.433+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>41</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Молотки</product>
+        <count>12</count>
+        <totalPrice>1200.0</totalPrice>
+        <dateOfSell>2019-04-07T15:37:49.910+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>41</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Молотки</product>
+        <count>12</count>
+        <totalPrice>1200.0</totalPrice>
+        <dateOfSell>2019-04-07T15:37:51.246+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Иван</customer>
+        <product>Гвозди</product>
+        <count>45</count>
+        <totalPrice>441.0</totalPrice>
+        <dateOfSell>2019-04-07T15:44:48.231+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Иван</customer>
+        <product>Гвозди</product>
+        <count>2</count>
+        <totalPrice>19.6</totalPrice>
+        <dateOfSell>2019-04-07T15:50:30.179+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Иван</customer>
+        <product>Гвозди</product>
+        <count>3</count>
+        <totalPrice>29.4</totalPrice>
+        <dateOfSell>2019-04-07T15:50:40.083+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>42</sellerId>
+        <seller>Хиппи</seller>
+        <customer>Иван</customer>
+        <product>Гвозди</product>
+        <count>123</count>
+        <totalPrice>1205.4</totalPrice>
+        <dateOfSell>2019-04-07T16:37:46.804+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Гвозди</product>
+        <count>2</count>
+        <totalPrice>20.0</totalPrice>
+        <dateOfSell>2019-04-07T20:55:16.283+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Гвозди</product>
+        <count>2</count>
+        <totalPrice>20.0</totalPrice>
+        <dateOfSell>2019-04-07T20:55:22.268+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Прото</product>
+        <count>7</count>
+        <totalPrice>241.92000000000002</totalPrice>
+        <dateOfSell>2019-04-08T09:23:41.082+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Померанец</product>
+        <count>33</count>
+        <totalPrice>1089.0</totalPrice>
+        <dateOfSell>2019-04-08T09:24:21.198+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Померанец</product>
+        <count>2</count>
+        <totalPrice>112.0</totalPrice>
+        <dateOfSell>2019-04-08T09:30:14.433+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Померанец</product>
+        <count>2</count>
+        <totalPrice>112.0</totalPrice>
+        <dateOfSell>2019-04-08T09:30:21.763+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Прото</product>
+        <count>2</count>
+        <totalPrice>112.0</totalPrice>
+        <dateOfSell>2019-04-08T09:30:27.327+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Прото</product>
+        <count>2</count>
+        <totalPrice>112.0</totalPrice>
+        <dateOfSell>2019-04-08T09:30:30.169+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Померанец</product>
+        <count>2</count>
+        <totalPrice>112.0</totalPrice>
+        <dateOfSell>2019-04-08T09:48:05.648+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Алексей</customer>
+        <product>Гвозди</product>
+        <count>2</count>
+        <totalPrice>66.0</totalPrice>
+        <dateOfSell>2019-04-08T09:48:10.161+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Померанец</product>
+        <count>45</count>
+        <totalPrice>2520.0</totalPrice>
+        <dateOfSell>2019-04-08T09:58:51.947+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Померанец</product>
+        <count>15</count>
+        <totalPrice>840.0</totalPrice>
+        <dateOfSell>2019-04-08T09:59:00.066+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Померанец</product>
+        <count>45</count>
+        <totalPrice>2520.0</totalPrice>
+        <dateOfSell>2019-04-08T10:00:06.713+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Прото</product>
+        <count>51</count>
+        <totalPrice>2856.0</totalPrice>
+        <dateOfSell>2019-04-08T10:00:33.789+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Прото</product>
+        <count>-16</count>
+        <totalPrice>-896.0</totalPrice>
+        <dateOfSell>2019-04-08T10:04:17.680+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Померанец</product>
+        <count>1</count>
+        <totalPrice>56.0</totalPrice>
+        <dateOfSell>2019-04-08T10:27:51.278+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Померанец</product>
+        <count>76</count>
+        <totalPrice>4256.0</totalPrice>
+        <dateOfSell>2019-04-08T10:27:56.945+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Прото</product>
+        <count>23</count>
+        <totalPrice>1288.0</totalPrice>
+        <dateOfSell>2019-04-08T10:30:00.150+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Прото</product>
+        <count>1</count>
+        <totalPrice>56.0</totalPrice>
+        <dateOfSell>2019-04-08T10:30:36.216+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Прото</product>
+        <count>23</count>
+        <totalPrice>1288.0</totalPrice>
+        <dateOfSell>2019-04-08T10:33:56.530+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Прото</product>
+        <count>58</count>
+        <totalPrice>3248.0</totalPrice>
+        <dateOfSell>2019-04-08T10:34:12.461+04:00</dateOfSell>
+    </objectList>
+    <objectList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="sell">
+        <sellerId>12</sellerId>
+        <seller>Рустам</seller>
+        <customer>Игор</customer>
+        <product>Гвозди</product>
+        <count>5</count>
+        <totalPrice>165.0</totalPrice>
+        <dateOfSell>2019-04-08T10:56:59.812+04:00</dateOfSell>
+    </objectList>
+</xmlCollector>

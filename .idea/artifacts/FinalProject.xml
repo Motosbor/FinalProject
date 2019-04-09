@@ -14,12 +14,12 @@
     </properties>
     <root id="root">
       <element id="archive" name="FinalProject.jar">
-        <element id="module-output" name="FinalProject" />
         <element id="directory" name="META-INF">
           <element id="file-copy" path="$PROJECT_DIR$/src/sample/META-INF/MANIFEST.MF" />
         </element>
-        <element id="file-copy" path="$PROJECT_DIR$/WorkIT.db" />
+        <element id="module-output" name="FinalProject" />
         <element id="library" level="project" name="sqlite-jdbc-3.23.1" />
+        <element id="file-copy" path="$PROJECT_DIR$/WorkIT.db" />
       </element>
     </root>
   </artifact>

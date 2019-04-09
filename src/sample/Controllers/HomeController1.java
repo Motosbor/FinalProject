@@ -403,14 +403,7 @@ public class HomeController1 implements Initializable {
     @FXML
     void giveMeMyXML(ActionEvent event) {
 
-        File file = new File("users.xml");
-        Desktop desktop = Desktop.getDesktop();
-        try {
-            desktop.open(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        XMLWorker.desktopFile();
 
     }
 
@@ -460,7 +453,7 @@ public class HomeController1 implements Initializable {
 
         ArrayList<Object> list = new ArrayList<>(AllSellsTable.getItems());
         XMLCollector xmlCollector = new XMLCollector(list);
-        XMLWorker.createXMLFile(xmlCollector, "view.xsl");
+        XMLWorker.createXMLFile(xmlCollector, "src/ShemasXSL/SellView.xsl");
 
     }
 
@@ -469,14 +462,14 @@ public class HomeController1 implements Initializable {
 
         XMLCollector XMLCollector = new XMLCollector(list);
 
-        XMLWorker.createXMLFile(XMLCollector,"view.xsl");
+        XMLWorker.createXMLFile(XMLCollector,"src/ShemasXSL/CustomersView.xsl");
     }
 
 
     public void ProductsTAB(Event event) {
         ArrayList<Object> list = new ArrayList<>(ProductsTable.getItems());
         XMLCollector xmlCollector = new XMLCollector(list);
-        XMLWorker.createXMLFile(xmlCollector, "view.xsl");
+        XMLWorker.createXMLFile(xmlCollector, "src/ShemasXSL/ProductsView.xsl");
     }
 
     public void NewSellTAB(Event event) {

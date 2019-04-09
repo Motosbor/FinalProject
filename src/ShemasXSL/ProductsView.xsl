@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html"/>
-    <xsl:template match="allUsers">
+    <xsl:template match="xmlCollector">
         <html>
             <head>
-                <link rel="stylesheet" href="style.css"/>
+                <link rel="stylesheet" href="src/styles/TableStyle.css"/>
             </head>
             <body>
                 <h1>Users</h1>
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <td>Имя</td>
-                            <td>Фамилия</td>
-                            <td>Логин</td>
-                            <td>Пароль</td>
-                        </tr>
-                    </thead>
                     <tbody>
-                        <xsl:for-each select="Users">
+                        <xsl:for-each select="objectList">
                             <tr>
                                 <td>
-                                    <xsl:value-of select="name"></xsl:value-of>
+                                    <xsl:value-of select="productName"></xsl:value-of>
                                 </td>
                                 <td>
-                                    <xsl:value-of select="lastName"></xsl:value-of>
+                                    <xsl:value-of select="price"></xsl:value-of>
                                 </td>
                                 <td>
-                                    <xsl:value-of select="login"></xsl:value-of>
+                                    <xsl:value-of select="balance"></xsl:value-of>
                                 </td>
                                 <td>
-                                    <xsl:value-of select="password"></xsl:value-of>
+                                    <xsl:value-of select="balance"></xsl:value-of>
                                 </td>
                             </tr>
                         </xsl:for-each>

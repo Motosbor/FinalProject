@@ -82,7 +82,7 @@ public class HomeController implements Initializable {
 //        ObservableList<User> list = FXCollections.observableArrayList(WorkerDB.takeAllUsers(ConnectorToDB.getInstance().getConnection()));
 //        TableVieW.setItems(list);
 //        AllUsers allUsers = new AllUsers(list);
-//        XMLWorker.createXMLFile(allUsers,"view.xsl");
+//        XMLWorker.createXMLFile(allUsers,"ProductsView.xsl");
 
         animate = new Animate(inYan);
         animate.playAnimation();
